@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Used Car Price Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/predict" method="POST">
+            <h1 id="heading"> <b> Used Car Price Prediction </b> </h1>
+            <label for="carname">Car Name</label>
+            <select name="car_model"  id="name" aria-label="Default select example">
+                <option value="-1" selected>Car Name</option>
+                {% for value, text in options.items() %}
+                    <option value="{{ value }}">{{ text }}</option>
+                {% endfor %}
+              </select>
+            <label for="year">Year</label>
+            <select name="year"  id="yearSelect">
+                <option value="-1">Year</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+              </select>
+
+            <label for="distance">Distance Travelled (in Kms)</label>
+            <input type="number" name="distance" placeholder="Distance(in kms)">
+
+            <label for="transmission">Transmission</label>
+            <select name="transmission" >
+                <option value="1">Manual</option>
+                <option value="0">Automatic</option>
+            </select>
+
+            <label for="fuel">Fuel Type</label>
+            <select name="fuel" class="form-control">
+                <option value="0">Diesel</option>
+                <option value="1">Petrol</option>
+                <option value="2">CNG</option>
+                <option value="3">LPG</option>
+              </select>
+
+
+            <label for="ownership">Ownership</label>
+            <select name="ownership" class="form-control">
+                <option value="0">1st</option>
+                <option value="1">2nd</option>
+                <option value="2">3rd</option>
+              </select>
+
+            <input type="submit" value="Predict" id="predict-btn" style="text-indent: 0;">
+        </form>
+    </div>
+
+    <div class="result">
+        <h2 style="padding: 10px";>Predicted Car Price : ₹ {{ data }} </h2>
+    </div>
+</body>
+
+</html>
